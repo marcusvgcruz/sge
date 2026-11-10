@@ -70,17 +70,17 @@ o `db.sqlite3` na raiz do projeto.
 ### Com Docker
 
 ```bash
-cp .env.example .env     # edite o SECRET_KEY; POSTGRES_* já vêm preenchidos
+cp .env.example .env     # edite o SECRET_KEY e coloque DJANGO_ENV=prd (Postgres do compose)
 docker compose up --build
 ```
 
 A aplicação sobe em `http://localhost:8000`. O container roda as migrações
 (`python manage.py migrate`) antes de iniciar o servidor.
 
-Observação: o compose levanta um PostgreSQL 15, mas o projeto só usa PostgreSQL
-quando `DJANGO_ENV=prd`. Com o `.env` de exemplo (`dev`), a aplicação roda em
-SQLite dentro do container. Para usar o banco do compose, coloque
-`DJANGO_ENV=prd` no `.env`.
+Observação: o compose levanta um PostgreSQL 15 e o `.env` de exemplo traz
+`DJANGO_ENV=dev` (SQLite, para rodar local sem Docker). Para o compose usar o
+PostgreSQL do compose, troque para `DJANGO_ENV=prd` no `.env` — sem isso a
+aplicação sobe em SQLite dentro do container.
 
 Crie o primeiro usuário dentro do container:
 

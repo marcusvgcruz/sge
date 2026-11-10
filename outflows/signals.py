@@ -1,8 +1,11 @@
+import logging
 from datetime import datetime
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from outflows.models import Outflow
 from services.notify import Notify
+
+logger = logging.getLogger(__name__)
 
 
 @receiver(post_save, sender=Outflow)
@@ -30,6 +33,6 @@ def send_outflow_event(sender, instance, created, **kwargs):
                 'description': instance.description,
             }
 
-            notify.send_event(data)
-    except:
-        pass
+            notify.send_order_event(data)
+    except Exception:
+        logger.exception('Falha ao enviar evento de saída para o Notify')
