@@ -1,59 +1,22 @@
-<div class="card mt-4">
-
-    <div class="card-body">
-
-        <div class="row">
-
-            <div class="col-md-3">
-
-                <div class="card bg-primary">
-                    <div class="card-body">
-                        <h5 class="card-title">Quantidade de vendas</h5>
-                        <p class="card-text text-white font-weight-bold display-6">{{ sales_metrics.total_sales }}</p>
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="col-md-3">
-
-                <div class="card bg-danger">
-                    <div class="card-body">
-                        <h5 class="card-title">Produtos vendidos</h5>
-                        <p class="card-text text-white font-weight-bold display-6">{{ sales_metrics.total_products_sold }}</p>
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="col-md-3">
-
-                <div class="card bg-success">
-                    <div class="card-body">
-                        <h5 class="card-title">Valor das vendas</h5>
-                        <p class="card-text text-white font-weight-bold display-6">R$ {{ sales_metrics.total_sales_value }}</p>
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="col-md-3">
-
-                <div class="card bg-warning">
-                    <div class="card-body">
-                        <h5 class="card-title">Lucro das vendas</h5>
-                        <p class="card-text text-white font-weight-bold display-6">R$ {{ sales_metrics.total_sales_profit }}</p>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
+<section class="metric-strip" aria-label="Métricas de vendas">
+  <div class="metric">
+    <span class="m-label">Vendas registradas</span>
+    <span class="m-value">{{ sales_metrics.total_sales }}</span>
+    <span class="m-note">saídas lançadas no sistema</span>
+  </div>
+  <div class="metric">
+    <span class="m-label">Produtos vendidos</span>
+    <span class="m-value">{{ sales_metrics.total_products_sold }}</span>
+    <span class="m-note">unidades que saíram do estoque</span>
+  </div>
+  <div class="metric">
+    <span class="m-label">Valor das vendas</span>
+    <span class="m-value is-money">{{ sales_metrics.total_sales_value }}</span>
+    <span class="m-note">soma a preço de venda das saídas</span>
+  </div>
+  <div class="metric is-profit">
+    <span class="m-label">Lucro das vendas</span>
+    <span class="m-value is-money">{{ sales_metrics.total_sales_profit }}</span>
+    <span class="m-note">venda − custo das saídas registradas</span>
+  </div>
+</section>

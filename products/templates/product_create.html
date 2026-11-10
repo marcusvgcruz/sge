@@ -1,20 +1,31 @@
 {% extends 'base.html' %}
 
+{% block title %}SGE - Cadastrar Produto{% endblock %}
+
 {% block content %}
 
-<div class="container mt-4">
-    <h3 class="display-6">Cadastrar Produto</h3>
+<header class="page-head">
+    <p class="eyebrow">Cadastro · estoque</p>
+    <h1>Cadastrar produto</h1>
+    <p class="sub">Preencha os dados do item. Categoria e marca precisam já estar cadastradas — se faltar, cadastre em “Categorias” ou “Marcas” primeiro.</p>
+</header>
 
-    <div class="card">
-        <div class="card-body">
-            <form method="post" class="form">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit" class="btn btn-primary">Salvar Produto</button>
-            </form>
-        </div>
+<div class="panel form-card">
+    <div class="panel-head">
+        <h2>Dados do produto</h2>
+        <span class="hint">campos com * são obrigatórios</span>
     </div>
-    <a href="{% url 'product_list' %}" class="btn btn-secondary mt-3">Cancelar e Voltar para a Lista de Produtos</a>
+
+    <form method="post" class="form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="d-flex flex-wrap gap-2 mt-3">
+            <button type="submit" class="btn btn-primary">
+                <i class="bi bi-check-lg" aria-hidden="true"></i> Salvar produto
+            </button>
+            <a href="{% url 'product_list' %}" class="btn btn-outline-secondary">Cancelar e voltar para a lista</a>
+        </div>
+    </form>
 </div>
 
 {% endblock %}

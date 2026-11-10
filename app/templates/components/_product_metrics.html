@@ -1,59 +1,22 @@
-<div class="card mt-4">
-
-    <div class="card-body">
-
-        <div class="row">
-
-            <div class="col-md-3">
-
-                <div class="card bg-primary">
-                    <div class="card-body">
-                        <h5 class="card-title">Quantidade de produtos</h5>
-                        <p class="card-text text-white font-weight-bold display-6">{{ product_metrics.total_quantity }}</p>
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="col-md-3">
-
-                <div class="card bg-danger">
-                    <div class="card-body">
-                        <h5 class="card-title">Custo de estoque</h5>
-                        <p class="card-text text-white font-weight-bold display-6">R$ {{ product_metrics.total_cost_price }}</p>
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="col-md-3">
-
-                <div class="card bg-success">
-                    <div class="card-body">
-                        <h5 class="card-title">Valor do estoque</h5>
-                        <p class="card-text text-white font-weight-bold display-6">R$ {{ product_metrics.total_selling_price }}</p>
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="col-md-3">
-
-                <div class="card bg-warning">
-                    <div class="card-body">
-                        <h5 class="card-title">Lucro de estoque</h5>
-                        <p class="card-text text-white font-weight-bold display-6">R$ {{ product_metrics.total_profit }}</p>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
+<section class="metric-strip" aria-label="Métricas do estoque">
+  <div class="metric is-accent">
+    <span class="m-label">Itens em estoque</span>
+    <span class="m-value">{{ product_metrics.total_quantity }}</span>
+    <span class="m-note">unidades somadas de todos os produtos</span>
+  </div>
+  <div class="metric is-cost">
+    <span class="m-label">Custo do estoque</span>
+    <span class="m-value is-money">{{ product_metrics.total_cost_price }}</span>
+    <span class="m-note">quanto o estoque em mãos já custou</span>
+  </div>
+  <div class="metric">
+    <span class="m-label">Valor do estoque</span>
+    <span class="m-value is-money">{{ product_metrics.total_selling_price }}</span>
+    <span class="m-note">quanto vale a preço de venda</span>
+  </div>
+  <div class="metric is-profit">
+    <span class="m-label">Lucro embutido no estoque</span>
+    <span class="m-value is-money">{{ product_metrics.total_profit }}</span>
+    <span class="m-note">valor de venda − custo, no estoque em mãos</span>
+  </div>
+</section>
