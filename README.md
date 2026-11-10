@@ -141,8 +141,9 @@ O [marcusvgcruz/notify](https://github.com/marcusvgcruz/notify) é o complemento
 do SGE para webhooks: recebe o evento de cada saída registrada e avisa por
 WhatsApp (CallMeBot) e por e-mail. O client que o SGE usa fica em
 `services/notify.py`, com a URL base `http://localhost:8001`, e é chamado no
-signal de criação de saída em `outflows/signals.py`. O envio é opcional: qualquer
-falha é descartada para não impedir a baixa de estoque.
+signal de criação de saída em `outflows/signals.py`. O envio é opcional: se o
+Notify estiver fora do ar, o erro é registrado no log (`logger.exception`) e a
+baixa de estoque não é interrompida.
 
 Para a integração funcionar como está configurada, suba o Notify na mesma
 máquina, na porta 8001.
